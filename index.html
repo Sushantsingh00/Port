@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushant Parcha - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #141414;
+            --bg-secondary: #1f1f1f;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-red: #e50914;
+            --accent-red-hover: #b20710;
+            --gradient-start: #0f0f0f;
+            --gradient-end: #141414;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 1.5rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(20, 20, 20, 0.95);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: 0.3s ease;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 4%;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.6) 50%, rgba(20,20,20,0.95) 100%),
+                        linear-gradient(to bottom, transparent 40%, var(--bg-primary) 100%),
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80') center/cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent-red);
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.5rem;
+            line-height: 1;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            color: var(--accent-red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-location svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--accent-red);
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-play {
+            background: white;
+            color: black;
+        }
+
+        .btn-play:hover {
+            background: rgba(255,255,255,0.85);
+        }
+
+        .btn-play svg {
+            width: 24px;
+            height: 24px;
+            fill: black;
+        }
+
+        .btn-info {
+            background: rgba(109, 109, 110, 0.7);
+            color: white;
+        }
+
+        .btn-info:hover {
+            background: rgba(109, 109, 110, 0.5);
+        }
+
+        .btn-info svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 4%;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--bg-primary);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .profile-card {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            color: var(--accent-red);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20,20,20,0.6) 0%, transparent 40%);
+        }
+
+        .profile-image span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-info {
+            padding-top: 1rem;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-role {
+            color: var(--accent-red);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-contact {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-contact a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .profile-contact a:hover {
+            color: var(--accent-red);
+        }
+
+        .about-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--bg-tertiary);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-red);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: linear-gradient(to bottom, var(--bg-primary) 0%, #0f0f0f 100%);
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--bg-tertiary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-red);
+            border-radius: 50%;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .timeline-company {
+            color: var(--accent-red);
+            font-size: 0.95rem;
+        }
+
+        .timeline-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .timeline-location {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        /* Projects Section - Netflix Style */
+        #projects {
+            background: var(--bg-primary);
+            padding-top: 80px;
+            margin-top: -80px;
+        }
+
+        .projects-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .project-row {
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            position: relative;
+            display: inline-block;
+            width: 260px;
+            vertical-align: top;
+            margin-right: 10px;
+            transition: transform 0.3s ease, z-index 0.3s ease;
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .project-card::before {
+            content: '';
+            display: block;
+            padding-top: 150%;
+        }
+
+        .project-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #3a3a3a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image span {
+            font-size: 3rem;
+            color: var(--accent-red);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60% 1rem 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .match-score {
+            color: #46d369;
+            font-weight: 600;
+        }
+
+        .project-rating {
+            border: 1px solid var(--text-secondary);
+            padding: 0 4px;
+            font-size: 0.65rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .project-tag::after {
+            content: '•';
+            margin-left: 0.5rem;
+            color: var(--bg-tertiary);
+        }
+
+        .project-tag:last-child::after {
+            display: none;
+        }
+
+        /* Horizontal Scroll */
+        .project-scroller {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem 0;
+        }
+
+        .project-scroller::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(to bottom, var(--bg-primary) 0%, #0f0f0f 100%);
+        }
+
+        .skills-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skills-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .skills-category-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            background: var(--bg-secondary);
+            padding: 0.6rem 1.25rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .skill-item:hover {
+            background: var(--bg-tertiary);
+            color: white;
+            border-color: var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        /* Education Section */
+        #education {
+            background: var(--bg-primary);
+        }
+
+        .education-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            padding: 2rem;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .education-school {
+            color: var(--accent-red);
+            font-size: 1rem;
+        }
+
+        .education-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .education-courses {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .education-courses strong {
+            color: white;
+        }
+
+        /* Achievements Section */
+        #achievements {
+            background: linear-gradient(to bottom, var(--bg-primary) 0%, #0f0f0f 100%);
+        }
+
+        .achievements-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-card {
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid var(--bg-tertiary);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        .achievement-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .achievement-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .achievement-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #0f0f0f;
+            text-align: center;
+            padding: 80px 4%;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .email-link {
+            display: inline-block;
+            background: var(--accent-red);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 4px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .email-link:hover {
+            background: var(--accent-red-hover);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-link:hover {
+            color: white;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f0f;
+            padding: 3rem 4%;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-card {
+                max-width: 220px;
+                margin: 0 auto;
+            }
+
+            .stats-row {
+                justify-content: center;
+            }
+
+            .project-card {
+                width: 160px;
+                min-width: 160px;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+        }
+
+        /* Animation for project cards */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInLeft 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo">SUSHANT<span>PARCHA</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Full Stack Developer</span>
+            <h1 class="hero-title">SUSHANT<br><span>PARCHA</span></h1>
+            <p class="hero-subtitle">Building Scalable Solutions with Modern Technologies</p>
+            <div class="hero-location">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Tempe, AZ, USA
+            </div>
+            <p class="hero-description">
+                Computer Science undergraduate at Arizona State University with hands-on experience in Python, Java, AWS, and automation systems. Proven track record in building full-stack applications, workflow automation, and cloud-integrated solutions.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-play">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    View Projects
+                </a>
+                <a href="#contact" class="btn btn-info">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="profile-card">
+                    <div class="profile-image"><span>SP</span></div>
+                    <div class="profile-info">
+                        <h3 class="profile-name">Sushant Parcha</h3>
+                        <p class="profile-role">Full Stack Developer</p>
+                        <p class="profile-contact">
+                            (602) 684-7721<br>
+                            <a href="mailto:parchasushant532@gmail.com">parchasushant532@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>DEAN'S LIST SCHOLAR</h3>
+                    <p>
+                        Computer Science undergraduate at Arizona State University with a minor in Data Science. Recognized for outstanding academic performance and proven expertise in building full-stack applications, workflow automation, and cloud-integrated solutions.
+                    </p>
+                    <p>
+                        Experienced in leading development teams, implementing CI/CD pipelines, and deploying scalable systems. Passionate about creating efficient solutions that solve real-world problems.
+                    </p>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-value">5+</div>
+                            <div class="stat-label">Years Exp</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">30+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="experience-container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">Technical Support Analyst Associate</h3>
+                            <p class="timeline-company">Arizona State University</p>
+                        </div>
+                        <span class="timeline-date">Oct 2024 – Present</span>
+                    </div>
+                    <p class="timeline-location">Tempe, AZ</p>
+                    <ul class="timeline-description">
+                        <li>Automate departmental inventory tracking and data workflows using custom shell scripts, reducing manual data entry by 60%</li>
+                        <li>Resolve hardware, software, and network issues for 500+ faculty and students, maintaining 95% first-contact resolution rate</li>
+                        <li>Document technical incidents and create knowledge base articles to improve team efficiency and reduce ticket resolution time</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">C2 Camp Lead</h3>
+                            <p class="timeline-company">Arizona State University</p>
+                        </div>
+                        <span class="timeline-date">Aug 2024</span>
+                    </div>
+                    <p class="timeline-location">Tempe, AZ</p>
+                    <ul class="timeline-description">
+                        <li>Led 3-day engineering orientation camp for 50+ incoming students with technical workshops and team activities</li>
+                        <li>Coordinated with faculty and staff to deliver presentations on academic resources and engineering career paths</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">IoT Developer Intern</h3>
+                            <p class="timeline-company">Cetpa Infotech Private Limited</p>
+                        </div>
+                        <span class="timeline-date">Jun 2020 – Jul 2020</span>
+                    </div>
+                    <p class="timeline-location">Delhi, India</p>
+                    <ul class="timeline-description">
+                        <li>Built AWS IoT-based home security system using Raspberry Pi, Python, and ultrasonic sensors</li>
+                        <li>Deployed real-time monitoring solution with AWS IoT Core and Lambda for automated notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="projects-container">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="project-row">
+                <div class="project-scroller">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                        <div class="project-overlay">
+                            <h3 class="project-title">Automated YouTube Shorts System</h3>
+                            <div class="project-meta">
+                                <span class="match-score">98%</span>
+                                <span>2024</span>
+                                <span class="project-rating">TV-MA</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">n8n</span>
+                                <span class="project-tag">OpenAI API</span>
+                                <span class="project-tag">AWS S3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555421689-492a1880c87c?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                        <div class="project-overlay">
+                            <h3 class="project-title">CSE360 Discussion Board</h3>
+                            <div class="project-meta">
+                                <span class="match-score">95%</span>
+                                <span>2024</span>
+                                <span class="project-rating">TV-14</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Java</span>
+                                <span class="project-tag">JavaFX</span>
+                                <span class="project-tag">H2 Database</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                        <div class="project-overlay">
+                            <h3 class="project-title">Digital Home Security System</h3>
+                            <div class="project-meta">
+                                <span class="match-score">92%</span>
+                                <span>2020</span>
+                                <span class="project-rating">TV-PG</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">AWS IoT</span>
+                                <span class="project-tag">Raspberry Pi</span>
+                                <span class="project-tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                        <div class="project-overlay">
+                            <h3 class="project-title">Cloud Automation Pipeline</h3>
+                            <div class="project-meta">
+                                <span class="match-score">89%</span>
+                                <span>2024</span>
+                                <span class="project-rating">TV-G</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">AWS Lambda</span>
+                                <span class="project-tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                        <div class="project-overlay">
+                            <h3 class="project-title">Data Analytics Dashboard</h3>
+                            <div class="project-meta">
+                                <span class="match-score">94%</span>
+                                <span>2023</span>
+                                <span class="project-rating">TV-14</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                        <div class="project-overlay">
+                            <h3 class="project-title">Authentication System</h3>
+                            <div class="project-meta">
+                                <span class="match-score">97%</span>
+                                <span>2024</span>
+                                <span class="project-rating">TV-MA</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Java</span>
+                                <span class="project-tag">SHA-256</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="skills-container">
+            <h2 class="section-title">Skills & Technologies</h2>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Languages</h3>
+                <div class="skills-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">Shell Scripting</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Cloud & APIs</h3>
+                <div class="skills-list">
+                    <span class="skill-item">AWS IoT Core</span>
+                    <span class="skill-item">AWS Lambda</span>
+                    <span class="skill-item">AWS S3</span>
+                    <span class="skill-item">YouTube Data API</span>
+                    <span class="skill-item">OpenAI API</span>
+                    <span class="skill-item">RESTful APIs</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Tools & Frameworks</h3>
+                <div class="skills-list">
+                    <span class="skill-item">n8n</span>
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">GitHub</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Raspberry Pi</span>
+                    <span class="skill-item">JUnit 5</span>
+                    <span class="skill-item">Mockito</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Databases</h3>
+                <div class="skills-list">
+                    <span class="skill-item">H2 Database</span>
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">MongoDB</span>
+                    <span class="skill-item">PostgreSQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="education-container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <div class="education-header">
+                    <div>
+                        <h3 class="education-title">Bachelor of Science in Computer Science</h3>
+                        <p class="education-school">Arizona State University</p>
+                    </div>
+                    <span class="education-date">Aug 2023 – May 2027</span>
+                </div>
+                <p class="education-courses">
+                    <strong>Relevant Coursework:</strong> Data Structures & Algorithms (CSE 310), Software Engineering (CSE 360), Object-Oriented Programming (CSE 205), Computer Organization (CSE 230), Digital Design (EEE 120), Programming Languages (CSE 240), Microprocessors, Networks & Transmission, Database Management, Web Development
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="achievements-container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="achievement-text">Dean's List Scholar - Arizona State University</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="achievement-text">New American University Scholar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <h2 class="contact-title">Let's Work Together</h2>
+            <p class="contact-subtitle">Ready to start your next project? Get in touch!</p>
+            <a href="mailto:parchasushant532@gmail.com" class="email-link">parchasushant532@gmail.com</a>
+
+            <div class="social-links">
+                <a href="https://linkedin.com/in/sushant-parcha" class="social-link" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/sushant-parcha" class="social-link" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.83-.26.83-.57v-2.23c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-.8 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.22.7.82.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="tel:+16026847721" class="social-link">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    (602) 684-7721
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Sushant Parcha. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
