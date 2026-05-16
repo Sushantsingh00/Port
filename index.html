@@ -92,6 +92,17 @@
             color: white;
         }
 
+        .nav-links a.resume-btn {
+            background: var(--accent-red);
+            padding: 8px 16px;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .nav-links a.resume-btn:hover {
+            background: var(--accent-red-hover);
+        }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -243,6 +254,21 @@
         }
 
         .btn-info svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .btn-resume {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .btn-resume:hover {
+            background: var(--accent-red-hover);
+        }
+
+        .btn-resume svg {
             width: 24px;
             height: 24px;
             fill: white;
@@ -519,8 +545,14 @@
             justify-content: center;
         }
 
-        .project-image span {
-            font-size: 3rem;
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image .project-icon {
+            font-size: 4rem;
             color: var(--accent-red);
         }
 
@@ -588,46 +620,6 @@
         .project-tag:last-child::after {
             display: none;
         }
-
-        .project-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-
-        .project-btn {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            border-radius: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .project-btn-demo {
-            background: var(--accent-red);
-            color: white;
-            border: none;
-        }
-
-        .project-btn-demo:hover {
-            background: var(--accent-red-hover);
-        }
-
-        .project-btn-code {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--text-secondary);
-        }
-
-        .project-btn-code:hover {
-            color: white;
-            border-color: white;
-        }
-
 
         /* Horizontal Scroll */
         .project-scroller {
@@ -969,6 +961,167 @@
         .project-card:nth-child(1) { animation-delay: 0.1s; }
         .project-card:nth-child(2) { animation-delay: 0.2s; }
         .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 35px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            z-index: 10;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+
+        .modal-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .modal-tags .tag {
+            background: var(--accent-red);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: var(--accent-red);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p, .modal-body li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .modal-body ul {
+            padding-left: 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-stat {
+            display: inline-block;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-stat .stat-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .project-stat .stat-value {
+            font-size: 1rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--bg-tertiary);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-modal {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-modal.btn-primary {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .btn-modal.btn-primary:hover {
+            background: var(--accent-red-hover);
+        }
+
+        .btn-modal.btn-secondary {
+            background: var(--bg-tertiary);
+            color: white;
+        }
+
+        .btn-modal.btn-secondary:hover {
+            background: #3a3a3a;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+            }
+            .modal-header, .modal-body, .modal-footer {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -979,6 +1132,7 @@
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="resume.pdf" target="_blank" class="resume-btn">Resume</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="menu-toggle">
@@ -1005,6 +1159,10 @@
                 <a href="#projects" class="btn btn-play">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     View Projects
+                </a>
+                <a href="resume.pdf" target="_blank" class="btn btn-resume">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                    Resume
                 </a>
                 <a href="#contact" class="btn btn-info">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -1066,9 +1224,9 @@
                             <h3 class="timeline-title">Technical Support Analyst Associate</h3>
                             <p class="timeline-company">Arizona State University</p>
                         </div>
-                        <span class="timeline-date">Oct 2024 – Present</span>
+                        <span class="timeline-date">Oct 2024 – Sep 2025</span>
                     </div>
-                    <p class="timeline-location">Tempe, AZ</p>
+                    <p class="timeline-location">Phoenix, AZ</p>
                     <ul class="timeline-description">
                         <li>Automate departmental inventory tracking and data workflows using custom shell scripts, reducing manual data entry by 60%</li>
                         <li>Resolve hardware, software, and network issues for 500+ faculty and students, maintaining 95% first-contact resolution rate</li>
@@ -1115,8 +1273,12 @@
 
             <div class="project-row">
                 <div class="project-scroller">
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                    <!-- Project 1: YouTube Shorts -->
+                    <div class="project-card" data-project="youtube-shorts">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&q=80" alt="YouTube Automation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="project-icon" style="display:none;">⚡</span>
+                        </div>
                         <div class="project-overlay">
                             <h3 class="project-title">Automated YouTube Shorts System</h3>
                             <div class="project-meta">
@@ -1129,15 +1291,15 @@
                                 <span class="project-tag">OpenAI API</span>
                                 <span class="project-tag">AWS S3</span>
                             </div>
-                        
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div></div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555421689-492a1880c87c?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                    <!-- Project 2: Discussion Board -->
+                    <div class="project-card" data-project="discussion-board">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80" alt="Discussion Board" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="project-icon" style="display:none;">💬</span>
+                        </div>
                         <div class="project-overlay">
                             <h3 class="project-title">CSE360 Discussion Board</h3>
                             <div class="project-meta">
@@ -1150,15 +1312,15 @@
                                 <span class="project-tag">JavaFX</span>
                                 <span class="project-tag">H2 Database</span>
                             </div>
-                        
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div></div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                    <!-- Project 3: Home Security -->
+                    <div class="project-card" data-project="home-security">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80" alt="Home Security" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="project-icon" style="display:none;">🏠</span>
+                        </div>
                         <div class="project-overlay">
                             <h3 class="project-title">Digital Home Security System</h3>
                             <div class="project-meta">
@@ -1171,15 +1333,15 @@
                                 <span class="project-tag">Raspberry Pi</span>
                                 <span class="project-tag">Python</span>
                             </div>
-                        
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div></div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                    <!-- Project 4: Cloud Automation -->
+                    <div class="project-card" data-project="cloud-automation">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80" alt="Cloud Automation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="project-icon" style="display:none;">☁️</span>
+                        </div>
                         <div class="project-overlay">
                             <h3 class="project-title">Cloud Automation Pipeline</h3>
                             <div class="project-meta">
@@ -1191,15 +1353,15 @@
                                 <span class="project-tag">AWS Lambda</span>
                                 <span class="project-tag">Python</span>
                             </div>
-                        
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div></div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                    <!-- Project 5: Data Analytics -->
+                    <div class="project-card" data-project="data-analytics">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Data Analytics" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="project-icon" style="display:none;">📊</span>
+                        </div>
                         <div class="project-overlay">
                             <h3 class="project-title">Data Analytics Dashboard</h3>
                             <div class="project-meta">
@@ -1211,15 +1373,15 @@
                                 <span class="project-tag">Python</span>
                                 <span class="project-tag">Pandas</span>
                             </div>
-                        
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div></div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                    <!-- Project 6: Authentication -->
+                    <div class="project-card" data-project="authentication">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=80" alt="Authentication" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="project-icon" style="display:none;">🔐</span>
+                        </div>
                         <div class="project-overlay">
                             <h3 class="project-title">Authentication System</h3>
                             <div class="project-meta">
@@ -1231,35 +1393,10 @@
                                 <span class="project-tag">Java</span>
                                 <span class="project-tag">SHA-256</span>
                             </div>
-                        
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div></div>
-                    </div>
-                </div>
-                                <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'); background-size: cover; background-position: center;"></div>
-                        <div class="project-overlay">
-                            <h3 class="project-title">AI Fashion Discovery Platform</h3>
-                            <div class="project-meta">
-                                <span class="match-score">96%</span>
-                                <span>2025</span>
-                                <span class="project-rating">TV-PG</span>
-                            </div>
-                            <div class="project-tags">
-                                <span class="project-tag">Machine Learning</span>
-                                <span class="project-tag">Computer Vision</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Web Scraping</span>
-                            </div>
-                            <div class="project-buttons">
-                                <a href="#" class="project-btn project-btn-demo">Demo</a>
-                                <a href="#" class="project-btn project-btn-code">Code</a>
-                            </div>
                         </div>
                     </div>
-</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1361,11 +1498,11 @@
             <a href="mailto:parchasushant532@gmail.com" class="email-link">parchasushant532@gmail.com</a>
 
             <div class="social-links">
-                <a href="https://linkedin.com/in/sushant-parcha" class="social-link" target="_blank">
+                <a href="https://www.linkedin.com/in/sushant-singh-56b39b242/" class="social-link" target="_blank">
                     <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     LinkedIn
                 </a>
-                <a href="https://github.com/sushant-parcha" class="social-link" target="_blank">
+                <a href="https://github.com/Sushantsingh00" class="social-link" target="_blank">
                     <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.83-.26.83-.57v-2.23c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-.8 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.22.7.82.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
                     GitHub
                 </a>
@@ -1382,11 +1519,159 @@
         <div class="footer-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="resume.pdf" target="_blank">Resume</a>
             <a href="#contact">Contact</a>
         </div>
     </footer>
 
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Title</h2>
+                <div class="modal-tags" id="modalTags"></div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer" id="modalFooter"></div>
+        </div>
+    </div>
+
     <script>
+        // Project Data - Add details for each project here
+        const projectData = {
+            "youtube-shorts": {
+                title: "Automated YouTube Shorts System",
+                tags: ["n8n", "OpenAI API", "AWS S3", "YouTube API"],
+                role: "Lead Developer",
+                duration: "Dec 2024 - Present",
+                overview: "Built fully automated content pipeline using n8n workflow automation to generate and upload YouTube Shorts without manual intervention. The system handles content ideation, generation, uploading, and scheduling.",
+                features: [
+                    "AI-driven content ideation using OpenAI API with custom prompts",
+                    "Automated title, description, and hashtag generation",
+                    "YouTube Data API integration for uploads with metadata management",
+                    "AWS S3 for scalable video asset storage",
+                    "Event-based triggers and scheduled workflows for multiple daily uploads"
+                ],
+                challenges: [
+                    "Implemented API request throttling to avoid YouTube rate limits",
+                    "Created error recovery system for failed uploads",
+                    "Optimized video processing pipeline for faster uploads"
+                ],
+                technologies: "n8n, JavaScript, OpenAI API, YouTube Data API, AWS Lambda, AWS S3, REST APIs",
+                demoLink: "#",
+                githubLink: "https://github.com/Sushantsingh00"
+            },
+            "discussion-board": {
+                title: "CSE360 Discussion Board Application",
+                tags: ["Java", "JavaFX", "H2 Database", "JUnit"],
+                role: "Team Lead",
+                duration: "Jan 2024 - May 2024",
+                overview: "Led a team of 4 through complete SDLC using Agile methodologies to build a full-featured discussion board application with secure authentication and real-time search.",
+                features: [
+                    "Secure authentication with role-based access control",
+                    "SHA-256 encryption for password security",
+                    "Session management for user authentication",
+                    "Real-time search functionality",
+                    "H2 SQL database with normalized schema"
+                ],
+                challenges: [
+                    "Implemented robust error handling for concurrent users",
+                    "Designed efficient database queries for large datasets",
+                    "Created intuitive JavaFX GUI with responsive design"
+                ],
+                technologies: "Java, JavaFX, H2 Database, JUnit 5, Mockito, Git/GitHub",
+                demoLink: "#",
+                githubLink: "https://github.com/Sushantsingh00"
+            },
+            "home-security": {
+                title: "Digital Home Security System",
+                tags: ["AWS IoT", "Raspberry Pi", "Python"],
+                role: "IoT Developer",
+                duration: "Jun 2020 - Jul 2020",
+                overview: "Engineered sensor-driven cloud system using AWS IoT Core for real-time monitoring and alert logging. Built a complete home security solution with ultrasonic sensors.",
+                features: [
+                    "Real-time monitoring using AWS IoT Core",
+                    "Ultrasonic sensor integration with Raspberry Pi",
+                    "Cloud notifications using AWS Lambda",
+                    "Automated alert system for security breaches",
+                    "Mobile-friendly dashboard for monitoring"
+                ],
+                challenges: [
+                    "Optimized sensor accuracy to reduce false positives",
+                    "Implemented low-latency notification system",
+                    "Designed power-efficient hardware setup"
+                ],
+                technologies: "AWS IoT Core, AWS Lambda, Raspberry Pi, Python, Ultrasonic Sensors",
+                demoLink: "#",
+                githubLink: "https://github.com/Sushantsingh00"
+            },
+            "cloud-automation": {
+                title: "Cloud Automation Pipeline",
+                tags: ["AWS Lambda", "Python", "boto3"],
+                role: "Developer",
+                duration: "2024",
+                overview: "Built serverless automation workflows to handle repetitive cloud tasks, reducing manual intervention and improving operational efficiency.",
+                features: [
+                    "Automated backup processes using AWS Lambda",
+                    "Scheduled scaling of resources based on demand",
+                    "Cloud resource monitoring and alerting",
+                    "Cost optimization through automated shutdown of idle resources"
+                ],
+                challenges: [
+                    "Designed fault-tolerant retry mechanisms",
+                    "Implemented comprehensive logging for debugging",
+                    "Created secure IAM role configurations"
+                ],
+                technologies: "AWS Lambda, Python, boto3, CloudWatch, IAM",
+                demoLink: "#",
+                githubLink: "https://github.com/Sushantsingh00"
+            },
+            "data-analytics": {
+                title: "Data Analytics Dashboard",
+                tags: ["Python", "Pandas", "Matplotlib"],
+                role: "Data Analyst",
+                duration: "2023",
+                overview: "Created interactive data visualization dashboards to analyze business metrics and provide actionable insights through comprehensive data reporting.",
+                features: [
+                    "Automated data collection and cleaning pipelines",
+                    "Interactive charts and visualizations",
+                    "Customizable report generation",
+                    "Real-time data processing from multiple sources"
+                ],
+                challenges: [
+                    "Optimized data processing for large datasets",
+                    "Designed intuitive visualization layouts",
+                    "Implemented automated data validation"
+                ],
+                technologies: "Python, Pandas, NumPy, Matplotlib, Seaborn, Jupyter",
+                demoLink: "#",
+                githubLink: "https://github.com/Sushantsingh00"
+            },
+            "authentication": {
+                title: "Secure Authentication System",
+                tags: ["Java", "SHA-256", "JWT"],
+                role: "Security Developer",
+                duration: "2024",
+                overview: "Built a comprehensive authentication system with multi-layer security, including password hashing, token-based sessions, and role-based access control.",
+                features: [
+                    "Secure password storage using SHA-256 hashing",
+                    "JWT-based session management",
+                    "Role-based access control (RBAC)",
+                    "Multi-factor authentication support",
+                    "Login attempt tracking and account lockout"
+                ],
+                challenges: [
+                    "Implemented secure token refresh mechanisms",
+                    "Designed protection against common attacks (SQL injection, XSS)",
+                    "Created scalable user management system"
+                ],
+                technologies: "Java, SHA-256, JWT, Spring Security, H2 Database",
+                demoLink: "#",
+                githubLink: "https://github.com/Sushantsingh00"
+            }
+        };
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -1423,6 +1708,81 @@
                     });
                 }
             });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('projectModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalTags = document.getElementById('modalTags');
+        const modalBody = document.getElementById('modalBody');
+        const modalFooter = document.getElementById('modalFooter');
+
+        // Add click event to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const projectKey = card.getAttribute('data-project');
+                const project = projectData[projectKey];
+
+                if (project) {
+                    // Set title
+                    modalTitle.textContent = project.title;
+
+                    // Set tags
+                    modalTags.innerHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+                    // Set body content
+                    modalBody.innerHTML = `
+                        <div class="project-stat">
+                            <span class="stat-label">Role</span>
+                            <span class="stat-value">${project.role}</span>
+                        </div>
+                        <div class="project-stat">
+                            <span class="stat-label">Duration</span>
+                            <span class="stat-value">${project.duration}</span>
+                        </div>
+
+                        <h3>Overview</h3>
+                        <p>${project.overview}</p>
+
+                        <h3>Key Features</h3>
+                        <ul>
+                            ${project.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+
+                        <h3>Challenges Solved</h3>
+                        <ul>
+                            ${project.challenges.map(c => `<li>${c}</li>`).join('')}
+                        </ul>
+
+                        <h3>Technologies Used</h3>
+                        <p>${project.technologies}</p>
+                    `;
+
+                    // Set footer buttons
+                    modalFooter.innerHTML = `
+                        <a href="${project.demoLink}" class="btn-modal btn-primary" target="_blank">View Live Demo</a>
+                        <a href="${project.githubLink}" class="btn-modal btn-secondary" target="_blank">View GitHub</a>
+                    `;
+
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
